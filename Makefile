@@ -55,7 +55,7 @@ APPNAME=mtb-example-ce240510-hello-world
 # IAR     -- IAR Compiler (must be installed separately)
 #
 # See also: CY_COMPILER_PATH below
-TOOLCHAIN=GCC_ARM
+TOOLCHAIN = GCC_ARM
 
 # Default build configuration. Options include:
 #
@@ -170,7 +170,7 @@ CY_GETLIBS_SHARED_NAME=mtb_shared
 #
 # The default depends on the selected TOOLCHAIN (GCC_ARM uses the ModusToolbox
 # software provided compiler by default).
-CY_COMPILER_GCC_ARM_DIR=
+# CY_COMPILER_GCC_ARM_DIR=
 
 
 # Locate ModusToolbox helper tools folders in default installation
