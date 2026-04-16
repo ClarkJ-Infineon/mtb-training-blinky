@@ -156,7 +156,7 @@ int main(void)
     printf("\x1b[2J\x1b[;H");
 
     printf("****************** "
-           "PDL: Hello World! Example "
+           "PDL: Hello IADT! Example "
            "****************** \r\n\n");
 
     printf("Hello World!!!\r\n\n");

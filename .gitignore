@@ -148,5 +148,7 @@ ehthumbs.db
 ehthumbs_vista.db
 [Dd]esktop.ini
 
-# VS Code / clangd cache
+# VS Code / clangd cache and config
 .cache/
+.clangd
+.clang-format
