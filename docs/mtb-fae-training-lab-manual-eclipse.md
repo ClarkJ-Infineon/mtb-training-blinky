@@ -1,9 +1,11 @@
-# Mastering ModusToolbox™ in Your Development Workflow
+# Mastering ModusToolbox™ in Your Development Workflow — Eclipse Edition
 
-## Lab Manual — Hands-On Exercises
+## Lab Manual — Hands-On Exercises (Eclipse Edition)
 
 **Training Session:** [Date] | **Presenter:** [Name]
 **Prerequisites:** ModusToolbox™ 3.9 or later installed, internet access for GitHub
+
+> This edition uses the Eclipse IDE for ModusToolbox™ for all IDE-dependent steps. A VS Code edition using the ModusToolbox™ for VS Code extension is available at [`mtb-fae-training-lab-manual-vscode.md`](mtb-fae-training-lab-manual-vscode.md) — the lab content and objectives are identical; only the IDE steps differ.
 
 ---
 
@@ -650,4 +652,4 @@ my-project/
 
 ---
 
-*End of Lab Manual*
+*End of Lab Manual — Eclipse Edition*
