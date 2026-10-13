@@ -40,7 +40,7 @@ MTB_TYPE=COMBINED
 # To change the target, it is recommended to use the Library manager
 # ('make library-manager' from command line), which will also update Eclipse IDE launch
 # configurations.
-TARGET=APP_KIT_PSC3M5_EVK
+TARGET=APP_KIT_PSC3M6_EVAL
 
 # Name of application (used to derive name of final linked file).
 #
@@ -70,6 +70,10 @@ CONFIG=Debug
 # If set to "true" or "1", display full command-lines when building.
 VERBOSE=
 
+ifneq ($(findstring PSC3M6,$(TARGET)),)
+# Config file for postbuild sign, relocate and merge operations.
+COMBINE_SIGN_JSON?=configs/signer_combiner.json
+endif
 
 ################################################################################
 # Advanced Configuration

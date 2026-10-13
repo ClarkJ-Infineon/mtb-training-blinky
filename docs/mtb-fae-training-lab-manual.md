@@ -3,7 +3,7 @@
 ## Lab Manual — Hands-On Exercises
 
 **Training Session:** [Date] | **Presenter:** [Name]
-**Prerequisites:** ModusToolbox™ 3.7 or later installed, internet access for GitHub
+**Prerequisites:** ModusToolbox™ 3.9 or later installed, internet access for GitHub
 
 ---
 
@@ -15,11 +15,11 @@ Verify the following before starting the labs:
 
 | ✅ | Requirement | How to Verify |
 |---|---|---|
-| ☐ | **ModusToolbox 3.7 or later** installed (3.8 recommended if available) | Open Modus-Shell — if it launches, you're good |
+| ☐ | **ModusToolbox 3.9 or later** installed | Open Modus-Shell — if it launches, you're good |
 | ☐ | **Git** available in Modus-Shell | Run `git --version` — Git is included with the ModusToolbox installation |
 | ☐ | **Internet access** to GitHub | Run `ping github.com` (required for `git clone` and `make getlibs`) |
 | ☐ | **Eclipse IDE for ModusToolbox** installed | Available in your ModusToolbox installation |
-| ☐ | (Optional) **KIT_PSC3M5_EVK** eval board + USB cable | Required only for programming exercises |
+| ☐ | (Optional) **KIT_PSC3M6_EVAL** eval board + USB cable | Required only for programming exercises |
 
 ### About Modus-Shell
 
@@ -143,7 +143,7 @@ cat libs/mtb.mk
 
 ```makefile
 SEARCH_retarget-io=../mtb_shared/retarget-io/release-v1.9.0
-SEARCH_mtb-hal-psc3=../mtb_shared/mtb-hal-psc3/release-v1.1.2
+SEARCH_mtb-dsl-psc3m6=../mtb_shared/mtb-dsl-psc3m6/release-v1.0.0
 ...
 ```
 
@@ -153,7 +153,7 @@ SEARCH_mtb-hal-psc3=../mtb_shared/mtb-hal-psc3/release-v1.1.2
 make build
 ```
 
-**Expected result:** The GCC ARM compiler builds the project targeting `KIT_PSC3M5_EVK`. Build output scrolls by, and the final lines should indicate success:
+**Expected result:** The GCC ARM compiler builds the project targeting `KIT_PSC3M6_EVAL`. Build output scrolls by, and the final lines should indicate success:
 
 ```
 ==============================================================================
@@ -269,7 +269,7 @@ From the **Quick Panel**, look under **Tools** and click **ModusToolbox archivin
 
 > 💡 **CLI alternative:** The `mtbarchive` command is not on the PATH by default in Modus-Shell or the IDE terminal. If you prefer the CLI, use the full path:
 >
-> `C:/Users/<user>/ModusToolbox/tools_3.7/mtbarchive/mtbarchive.exe -v -o project_archive.zip -f .`
+> `C:/Users/<user>/ModusToolbox/tools_3.9/mtbarchive/mtbarchive.exe -v -o project_archive.zip -f .`
 
 #### Step 7 — Export the archive
 
@@ -353,14 +353,14 @@ Create a custom Board Support Package (BSP) from the kit BSP, modify pin assignm
 
 #### Step 1 — Copy the kit BSP to create a new BSP
 
-In **Eclipse Project Explorer**, expand `bsps/` in your project. Right-click `TARGET_APP_KIT_PSC3M5_EVK` → **Copy**, then right-click `bsps/` → **Paste**. Rename the pasted folder to `TARGET_MY_BOARD`.
+In **Eclipse Project Explorer**, expand `bsps/` in your project. Right-click `TARGET_APP_KIT_PSC3M6_EVAL` → **Copy**, then right-click `bsps/` → **Paste**. Rename the pasted folder to `TARGET_MY_BOARD`.
 
 **Expected result:** A new directory `bsps/TARGET_MY_BOARD/` appears in Project Explorer, containing an exact copy of the kit BSP — `config/design.modus`, `cybsp.h`, `cybsp.c`, `GeneratedSource/`, linker scripts, and all other BSP files.
 
 > 💡 **CLI alternative (IDE integrated terminal):** You can also do this from the terminal within Eclipse or VS Code (see Appendix A for terminal setup):
 >
 > `cd C:/MTB_Training/mtb-training-blinky`
-> `cp -r bsps/TARGET_APP_KIT_PSC3M5_EVK bsps/TARGET_MY_BOARD`
+> `cp -r bsps/TARGET_APP_KIT_PSC3M6_EVAL bsps/TARGET_MY_BOARD`
 
 > 💡 **Naming convention:** Custom BSP directories always start with `TARGET_`. Use a descriptive name — e.g., `TARGET_MY_PRODUCT_V2`, `TARGET_CUSTOMER_MAIN_BOARD`.
 
@@ -388,7 +388,7 @@ Select the BSP → click **Update**. Library Manager handles everything in one s
 
 **Option B — Makefile edit + make getlibs (CLI alternative)**
 
-1. Open `Makefile` and change `TARGET=APP_KIT_PSC3M5_EVK` to `TARGET=MY_BOARD`
+1. Open `Makefile` and change `TARGET=APP_KIT_PSC3M6_EVAL` to `TARGET=MY_BOARD`
 2. Run `make getlibs` to regenerate `libs/mtb.mk` with the new BSP path
 
 ---
@@ -402,7 +402,7 @@ From Eclipse, open Device Configurator on the `MY_BOARD` BSP:
 
 Alternatively, from the Quick Panel → **Device Configurator** (it should target the active BSP).
 
-**Expected result:** Device Configurator opens showing the inherited kit configuration — all the pin assignments, clock settings, and peripheral configurations from the original `KIT_PSC3M5_EVK` BSP.
+**Expected result:** Device Configurator opens showing the inherited kit configuration — all the pin assignments, clock settings, and peripheral configurations from the original `KIT_PSC3M6_EVAL` BSP.
 
 #### Step 4 — Change one pin assignment
 
@@ -443,7 +443,7 @@ make build
 
 #### Step 7 — (Optional) Program and verify
 
-If you have a `KIT_PSC3M5_EVK` eval board connected:
+If you have a `KIT_PSC3M6_EVAL` eval board connected:
 
 ```bash
 make program
@@ -514,14 +514,14 @@ A quick reference for the most commonly used ModusToolbox commands. Run all comm
 
 > ⚠️ **CLI path note:** `mtbarchive` is not available directly in Modus-Shell or the IDE terminal. Use the full path:
 >
-> `C:/Users/<user>/ModusToolbox/tools_3.7/mtbarchive/mtbarchive.exe -v -o <file.zip> -f <project>`
+> `C:/Users/<user>/ModusToolbox/tools_3.9/mtbarchive/mtbarchive.exe -v -o <file.zip> -f <project>`
 
 ### Switching the Active BSP (CLI)
 
 Edit the Makefile `TARGET=` variable, then run `make getlibs` to regenerate `libs/mtb.mk`:
 
 ```bash
-# 1. Edit Makefile: change TARGET=APP_KIT_PSC3M5_EVK to TARGET=MY_BOARD
+# 1. Edit Makefile: change TARGET=APP_KIT_PSC3M6_EVAL to TARGET=MY_BOARD
 # 2. Regenerate dependency paths
 make getlibs
 ```
@@ -613,7 +613,7 @@ my-project/
 ├── deps/                       ← YOUR declared dependencies (committed to Git)
 │   └── retarget-io.mtb
 ├── bsps/                       ← BSP files (local to project)
-│   └── TARGET_APP_KIT_PSC3M5_EVK/
+│   └── TARGET_APP_KIT_PSC3M6_EVAL/
 │       ├── cybsp.c / cybsp.h   ← Board init API
 │       └── config/
 │           └── design.modus    ← Device Configurator master file
@@ -622,8 +622,8 @@ my-project/
 │   └── (transitive .mtb files)
 ├── build/                      ← Build output (never commit)
 └── mtb_shared/                 ← SHARED library source (one level up, never commit)
-    ├── mtb-hal-psc3/
-    │   └── release-v1.1.2/
+    ├── mtb-dsl-psc3m6/
+    │   └── release-v1.0.0/
     ├── retarget-io/
     │   └── release-v1.9.0/
     └── ...
