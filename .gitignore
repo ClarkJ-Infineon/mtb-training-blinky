@@ -41,6 +41,9 @@ openocd.tcl
 .vscode/
 *.code-workspace
 
+# ModusToolbox for VS Code extension - local environment/session state
+.modustoolbox/
+
 # IAR Embedded Workbench files
 
 # IAR Project file.
