@@ -1,0 +1,15 @@
+# Normalize all text files to LF line endings in the repository, regardless
+# of each contributor's local core.autocrlf setting. This prevents false
+# "modified" flags in `git status` caused by CRLF/LF normalization churn.
+* text=auto eol=lf
+
+# Explicitly mark binary assets so they are never subject to any line-ending
+# normalization.
+*.png binary
+*.pdf binary
+*.pptx binary
+*.ico binary
+*.zip binary
+*.elf binary
+*.bin binary
+*.hex binary
